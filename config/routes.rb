@@ -1,6 +1,4 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-
-  root to: 'repositories#index'
-  resource :repositories, only: :create
+  root to: 'contributors#index'
+  resource :contributors, only: :create
 end

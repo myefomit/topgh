@@ -1,4 +1,4 @@
-class RepositoriesController < ApplicationController
+class ContributorsController < ApplicationController
   def index; end
 
   def create
@@ -7,15 +7,23 @@ class RepositoriesController < ApplicationController
     @contributors = response.last(3)
     @contributors.map! do |contributor|
       author = contributor['author']
-      {
+      contributor_params = ({
         login: author['login'],
         avatar_url: author['avatar_url'],
         url: author['html_url']
-      }
+      })
+      build_contributor contributor_params
     end
+    # contributor = @contributors.last
+    # send_data DigestPdf.new(contributor).render, filename: 'download.pdf', type: 'application/pdf'
   end
 
   private
+
+  def build_contributor(contributor)
+    Contributor.find_by(login: contributor[:login]) ||
+    Contributor.create(contributor)
+  end
 
   def build_url
     owner, repo = params[:url].split('/').last(2)
