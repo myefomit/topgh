@@ -1,19 +1,21 @@
-<ol>
-  <% @contributors.each do |contributor| %>
-    <li>
-      <p>
-        <%= contributor.login %>  |
-        <%= link_to 'download.pdf', contributor_digest_path(contributor), { target: '_self' } %>
-      </p>
-    </li>
-  <% end %>
-</ol>
-
-<div>
-  <%= form_tag '/zip' do %>
+<div class="content-result">
+  <ol>
     <% @contributors.each do |contributor| %>
-      <%= hidden_field_tag 'contributors[]', contributor.id %>
+      <li>
+        <p>
+          <%= contributor.login %>  |
+          <%= link_to 'download.pdf', contributor_digest_path(contributor), { target: '_self' } %>
+        </p>
+      </li>
     <% end %>
-    <%= button_tag 'Download archive' %>
-  <% end %>
+  </ol>
+
+  <div>
+    <%= form_tag '/zip' do %>
+      <% @contributors.each do |contributor| %>
+        <%= hidden_field_tag 'contributors[]', contributor.id %>
+      <% end %>
+      <%= button_tag 'Download archive' %>
+    <% end %>
+  </div>
 </div>

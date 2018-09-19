@@ -1,0 +1,25 @@
+.search {
+  width: 50%;
+  margin-top: 300px;
+  margin-left: 350px;
+}
+.search-input {
+  width: 100%;
+  font-size: 28px;
+  padding: 3px 10px;
+  background-color: #e5e6e8;
+  border: none;
+}
+.search-input:focus {
+  outline-width: 0;
+}
+.search-button {
+  display: block;
+  margin-top: 5px;
+  padding: 16px 32px;
+  width: 103%;
+  border: none;
+  background-color: #000000;
+  color: white;
+  font-size: 24px;
+}
