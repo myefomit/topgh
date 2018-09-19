@@ -1,3 +1,5 @@
+require 'zip'
+
 class ZipService
 
   def initialize(contributors:)
