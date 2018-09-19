@@ -13,12 +13,12 @@ class DigestsController < ApplicationController
       Contributor.find(contributor)
     end
     zipfile_name = ZipService.new(contributors: contributors).zip
-    send_temp_file zipfile_name
+    send_and_delete zipfile_name
   end
 
   private
 
-  def send_temp_file(file_name)
+  def send_and_delete(file_name)
     File.open(file_name) do |file|
       send_data file.read, filename: 'digests.zip', type: 'application/zip'
     end
