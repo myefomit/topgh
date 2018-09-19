@@ -5,7 +5,6 @@ module GithubAdapter
 
     API_BASE_URL = 'https://api.github.com/repos/'
     CONTRIBUTORS_NUMBER = 3
-    RETRY = 4
 
     def initialize(url:)
       @url = url
@@ -19,13 +18,13 @@ module GithubAdapter
     private
 
     def request_contributors
-      # sometimes GitHub API v3 just responds with '{}'
-      response = nil
-      RETRY.times do
-        response = Net::HTTP.get(build_api_url)
-        break if response != '{}'
+      # wait untill github responds with 200
+      # https://developer.github.com/v3/repos/statistics/#a-word-about-caching
+      response = Net::HTTP.get_response(build_api_url)
+      while response.code != '200' do
+        response = Net::HTTP.get_response(build_api_url)
       end
-      response = JSON.parse(response)
+      response = JSON.parse(response.body)
     end
 
     def parse_contributors(response)
