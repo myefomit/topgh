@@ -12,7 +12,7 @@
 <div>
   <%= form_tag '/zip' do %>
     <% @contributors.each do |contributor| %>
-      <%= hidden_field_tag 'contributors[]', contributor.login%>
+      <%= hidden_field_tag 'contributors[]', contributor.id %>
     <% end %>
     <%= button_tag 'Download archive' %>
   <% end %>

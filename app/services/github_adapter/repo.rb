@@ -33,7 +33,7 @@ module GithubAdapter
           avatar_url: author['avatar_url'],
           url: author['html_url']
         }
-      end
+      end.reverse
     end
 
     def build_api_url

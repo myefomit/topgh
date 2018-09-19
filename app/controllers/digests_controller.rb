@@ -10,7 +10,7 @@ class DigestsController < ApplicationController
 
   def zip
     contributors = params[:contributors].map do |contributor|
-      Contributor.find_by(login: contributor)
+      Contributor.find(contributor)
     end
 
     zip_data = ZipService.new(contributors: contributors).zip_data
