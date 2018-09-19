@@ -22,4 +22,40 @@
   background-color: #000000;
   color: white;
   font-size: 24px;
+  cursor: pointer;
+}
+.result {
+  margin: auto;
+  margin-top: 100px;
+  width: 30%;
+  font-size: 22px;
+}
+.home {
+  display: inline-block;
+  margin-left: 10px;
+  padding-left: 10px;
+  width: 42%;
+}
+.zip-form {
+  display: inline-block;
+  width: 50%;
+  float: right;
+}
+.login {
+  display: inline-block;
+  text-align: left;
+}
+.download-link {
+  display: inline-block;
+  float: right;
+}
+.download-zip {
+  display: inline-block;
+  width: 100%;
+  border: none;
+  background-color: #000000;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 5px 0px;
 }
