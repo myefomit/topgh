@@ -4,17 +4,10 @@ class ZipService
     @contributors = contributors
   end
 
-  def zip_data
+  def zip
     zipfile_name = "#{Rails.root}/tmp/digests#{Time.now.to_i}.zip"
-
-    begin
-      zip_pdf_files zipfile_name
-      zip_data = File.open(zipfile_name, 'r').read
-    ensure
-      File.delete(zipfile_name)
-    end
-
-    zip_data
+    zip_pdf_files zipfile_name
+    zipfile_name
   end
 
   private

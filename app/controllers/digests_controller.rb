@@ -12,8 +12,16 @@ class DigestsController < ApplicationController
     contributors = params[:contributors].map do |contributor|
       Contributor.find(contributor)
     end
+    zipfile_name = ZipService.new(contributors: contributors).zip
+    send_temp_file zipfile_name
+  end
 
-    zip_data = ZipService.new(contributors: contributors).zip_data
-    send_data zip_data, filename: 'digests.zip', type: 'application/zip'
+  private
+
+  def send_temp_file(file_name)
+    File.open(file_name) do |file|
+      send_data file.read, filename: 'digests.zip', type: 'application/zip'
+    end
+    File.delete(file_name)
   end
 end

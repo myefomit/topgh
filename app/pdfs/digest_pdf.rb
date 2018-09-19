@@ -22,7 +22,7 @@ class DigestPdf
     text @person.login, style: :bold, size: 20, align: :center
     move_down 10
 
-    text "Check out #{@person.login}'s profile at:", size: 16, align: :center
+    text "Find #{@person.login}'s profile at:", size: 16, align: :center
     text @person.url, link: @person.url, size: 16, align: :center, color: '0000ff'
   end
 
