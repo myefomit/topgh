@@ -3,7 +3,7 @@
     <li>
       <p>
         <%= contributor.login %>  |
-        <a href="<%= contributor_digest_path(contributor) %>"> download.pdf </a>
+        <%= link_to 'download.pdf', contributor_digest_path(contributor), { target: '_self' } %>
       </p>
     </li>
   <% end %>
@@ -14,6 +14,6 @@
     <% @contributors.each do |contributor| %>
       <%= hidden_field_tag 'contributors[]', contributor.login%>
     <% end %>
-    <%= submit_tag 'Download archive' %>
+    <%= button_tag 'Download archive' %>
   <% end %>
 </div>
