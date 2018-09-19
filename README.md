@@ -1,24 +1,7 @@
-# README
+# README 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Installation
+Basic rails app - no special steps required
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+## Known issues
+1. Fails to zip in some cases (ex: https://github.com/johnjago/awesome-free-software). Possibly there are IO races
