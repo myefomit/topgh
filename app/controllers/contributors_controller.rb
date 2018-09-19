@@ -14,8 +14,6 @@ class ContributorsController < ApplicationController
       })
       build_contributor contributor_params
     end
-    # contributor = @contributors.last
-    # send_data DigestPdf.new(contributor).render, filename: 'download.pdf', type: 'application/pdf'
   end
 
   private

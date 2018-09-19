@@ -1,7 +1,19 @@
 <ol>
   <% @contributors.each do |contributor| %>
     <li>
-      <%= contributor.login %>
+      <p>
+        <%= contributor.login %>  |
+        <a href="<%= contributor_digest_path(contributor) %>"> download.pdf </a>
+      </p>
     </li>
   <% end %>
 </ol>
+
+<div>
+  <%= form_tag '/zip' do %>
+    <% @contributors.each do |contributor| %>
+      <%= hidden_field_tag 'contributors[]', contributor.login%>
+    <% end %>
+    <%= submit_tag 'Download archive' %>
+  <% end %>
+</div>

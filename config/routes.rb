@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
   root to: 'contributors#index'
-  resource :contributors, only: :create
+  resources :contributors, only: :create do
+    resource :digest, only: :show
+  end
+
+  post '/zip', to: 'digests#zip'
 end
