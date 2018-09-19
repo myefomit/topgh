@@ -5,6 +5,7 @@ module GithubAdapter
 
     API_BASE_URL = 'https://api.github.com/repos/'
     CONTRIBUTORS_NUMBER = 3
+    RETRY = 4
 
     def initialize(url:)
       @url = url
@@ -12,17 +13,18 @@ module GithubAdapter
 
     def contributors
       contributors = request_contributors
-
-      # GitHub API v3 returns '{}' for every new repo requested
-      # but it works well with further requests
-      contributors = request_contributors if contributors == {}
       parse_contributors contributors
     end
 
     private
 
     def request_contributors
-      response = Net::HTTP.get(build_api_url)
+      # sometimes GitHub API v3 just responds with '{}'
+      response = nil
+      RETRY.times do
+        response = Net::HTTP.get(build_api_url)
+        break if response != '{}'
+      end
       response = JSON.parse(response)
     end
 
