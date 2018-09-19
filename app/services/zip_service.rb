@@ -1,4 +1,4 @@
-require 'zip'
+require 'zip/zip'
 
 class ZipService
 
